@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfWinGest", "WpfWinGest\WpfWinGest.csproj", "{23AB0D83-825B-43BA-93C6-117EA3C71812}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionCommercialeDll", "..\GestionCommercialeDll\GestionCommercialeDll.csproj", "{295658A2-391C-42B7-BC37-A939FC9D613D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{23AB0D83-825B-43BA-93C6-117EA3C71812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23AB0D83-825B-43BA-93C6-117EA3C71812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23AB0D83-825B-43BA-93C6-117EA3C71812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{295658A2-391C-42B7-BC37-A939FC9D613D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{295658A2-391C-42B7-BC37-A939FC9D613D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{295658A2-391C-42B7-BC37-A939FC9D613D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{295658A2-391C-42B7-BC37-A939FC9D613D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
