@@ -7,7 +7,40 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="324" Margin="87,58,0,0" VerticalAlignment="Top" Width="508"/>
+        <DataGrid x:Name="dtgListClient" HorizontalAlignment="Left"
+                  Height="324" Margin="87,58,0,0" VerticalAlignment="Top" Width="508" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Raison Sociale" Binding="{Binding RaisonSociale}" />
+                <DataGridTextColumn Header="Ville" Binding="{Binding Ville}" />
+                <DataGridTextColumn Header="Code Postal" Binding="{Binding CodPostal}" />
+                <DataGridCheckBoxColumn Header="Privé" Binding="{Binding TypeSociete}" />
+                <DataGridTextColumn Header="Activité" Binding="{Binding Activite.Activit}" />
+                <DataGridTextColumn Header="Nature" Binding="{Binding Activite.NatureAct}" />
+
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Details}" Margin="10" />
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+
+
+
+
+
+
+        </DataGrid>
+                  
+                  
+                  
+                  
+                  
+
+
+       
+        
+        
 
     </Grid>
+    
 </Window>

@@ -100,5 +100,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CDI-ABI\GestionCommercialeDll\GestionCommercialeDll.csproj">
+      <Project>{295658a2-391c-42b7-bc37-a939fc9d613d}</Project>
+      <Name>GestionCommercialeDll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XMLFile1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="activites.xml" />
+    <Resource Include="clients.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
