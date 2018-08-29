@@ -5,28 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfWinGest"
         mc:Ignorable="d"
-        Title="WConsultClient1" Height="400" Width="600">
-    <Grid HorizontalAlignment="Left" Height="216" Margin="10,10,0,0" VerticalAlignment="Top" Width="258">
-        <Grid Height="35" Margin="27,319,-307,-201" VerticalAlignment="Top" HorizontalAlignment="Left" Width="513">
+        Title="WConsultClient1" Height="499" Width="652">
+    <Grid HorizontalAlignment="Left" Height="216" Margin="10,10,0,0" VerticalAlignment="Top" Width="308">
+        <Grid Height="35" Margin="46,407,-251,-226" VerticalAlignment="Top" HorizontalAlignment="Left" Width="513">
             <Button HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Width="100" Height="23" Content="Modifier Client"/>
             <Button  HorizontalAlignment="Left" Margin="137,5,0,0" VerticalAlignment="Top" Width="100" Height="23" Content="Nouveau Contact"/>
             <Button  HorizontalAlignment="Left" Margin="261,5,0,0" VerticalAlignment="Top" Width="100" Height="23" Content="Supprimer Contact"/>
             <Button  HorizontalAlignment="Left" Margin="406,5,0,0" VerticalAlignment="Top" Width="100" Height="23" Content="Quiter"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="181" Margin="374,14,-292,0" VerticalAlignment="Top" Width="176">
+        <Grid HorizontalAlignment="Left" Height="201" Margin="331,14,-242,0" VerticalAlignment="Top" Width="219">
             <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top" Width="65"/>
         </Grid>
-        <Label Content="Id Client" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblIdClient" Content="Label" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblRaisonSociale" Content="Label" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label Content="Numéro Client" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblIdClient" Content="Label" HorizontalAlignment="Left" Margin="123,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.053,0.615"/>
+        <Label x:Name="lblRaisonSociale" Content="Label" HorizontalAlignment="Left" Margin="123,41,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.514,1.962"/>
         <Label Content="Raison Sociale" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.533,2.448"/>
         <Label x:Name="lblAdresse" Content="Adresse" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.566,3.465" ScrollViewer.CanContentScroll="True"/>
         <Label Content="Code Postal &amp; Ville" HorizontalAlignment="Left" Margin="0,149,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="101,75,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.409,4.553"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="163,149,0,0" VerticalAlignment="Top" Width="85"/>
-        <Label x:Name="lblCodePostal" Content="Label" HorizontalAlignment="Left" Margin="93,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.759,0.436"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="93,106,0,0" VerticalAlignment="Top" Width="70"/>
-        <Label x:Name="lblVille" Content="Label" HorizontalAlignment="Left" Margin="93,177,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.91,0.857"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="123,75,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.409,4.553"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="185,146,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.153,0.5"/>
+        <Label x:Name="lblCodePostal" Content="Label" HorizontalAlignment="Left" Margin="123,146,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.759,0.436"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="123,106,0,0" VerticalAlignment="Top" Width="70"/>
+        <Label x:Name="lblVille" Content="Label" HorizontalAlignment="Left" Margin="123,177,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.91,0.857"/>
         <Label Content="Telephone" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" ScrollViewer.CanContentScroll="True"/>
+        <DataGrid HorizontalAlignment="Left" Height="182" Margin="10,220,-242,-186" VerticalAlignment="Top" Width="540"/>
     </Grid>
 </Window>
