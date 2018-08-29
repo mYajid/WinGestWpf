@@ -8,7 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="dtgListClient" HorizontalAlignment="Left"
-                  Height="324" Margin="87,58,0,0" VerticalAlignment="Top" Width="508" AutoGenerateColumns="False">
+                  Height="324" Margin="87,58,0,0" VerticalAlignment="Top" Width="508" AutoGenerateColumns="False"
+                  MouseDoubleClick="dtgListClient_MouseDoubleClick" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Raison Sociale" Binding="{Binding RaisonSociale}" />
                 <DataGridTextColumn Header="Ville" Binding="{Binding Ville}" />

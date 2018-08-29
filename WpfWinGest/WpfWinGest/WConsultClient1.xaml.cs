@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using GestionCommercialeDll;
 namespace WpfWinGest
 {
     /// <summary>
@@ -19,9 +19,12 @@ namespace WpfWinGest
     /// </summary>
     public partial class WConsultClient1 : Window
     {
-        public WConsultClient1()
+        public WConsultClient1(Client client)
         {
             InitializeComponent();
+
+
+            lblIdClient.Content = client.IdClient;
         }
     }
 }

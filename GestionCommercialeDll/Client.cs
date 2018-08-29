@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
 namespace GestionCommercialeDll
 {
 
+    [Serializable()]
     public class Client
     {
-        /// <summary>
-        /// Creation instance liste clients
-        /// </summary>
-        public static HashSet<Client> clientsHS = new HashSet<Client>();
 
+        public static HashSet<Client> clientsHS = new HashSet<Client>();
 
         private int _idClient;
         private string _raisonSociale;
@@ -22,19 +20,38 @@ namespace GestionCommercialeDll
         private int _telephoneClient;
         private int _effectif;
         private decimal _CA;
-        private string _typeSociete;
+        private bool _typeSociete;
         private string _ville;
         private int _CP;
+
+
+        public Client()
+        {
+
+        }
 
         /// <summary>
         /// L'id de mon client
         /// </summary>
-
+        public int IdClient
+        {
+            get
+            {
+                return _idClient;
+            }
+            set
+            {
+                if (!IsIdClientValid(value))
+                {
+                    throw new Exception(string.Format("La valeur saisie {0} n'est pas valide", value));
+                }
+                _idClient = value;
+            }
+        }
 
         /// <summary>
         /// Numero de telephone client
-        /// </summary>
-
+        /// </summary>        
         public int TelephoneClient
         {
             get
@@ -43,13 +60,14 @@ namespace GestionCommercialeDll
             }
             set
             {
+
                 if (!IsTelephoneClientValid(value))
+
                 {
                     throw new Exception(string.Format("Le numero saisie {0} n'est pas valide", value));
                 }
                 _telephoneClient = value;
             }
-
         }
         /// <summary>
         /// L'effectif de mon client
@@ -64,7 +82,6 @@ namespace GestionCommercialeDll
             {
                 _effectif = value;
             }
-
         }
         /// <summary>
         /// La chiffre d'affaire de mon client 
@@ -79,12 +96,11 @@ namespace GestionCommercialeDll
             {
                 _CA = value;
             }
-
         }
         /// <summary>
         /// Type Societe client
         /// </summary>
-        public string TypeSociete
+        public bool TypeSociete
         {
             get
             {
@@ -92,16 +108,27 @@ namespace GestionCommercialeDll
             }
             set
             {
-
                 _typeSociete = value;
-
             }
-
         }
         /// <summary>
         /// Raison Sociale client 
         /// </summary>
-
+        public string RaisonSociale
+        {
+            get
+            {
+                return _raisonSociale;
+            }
+            set
+            {
+                if (!IsRaisonSocialeValide(value))
+                {
+                    throw new Exception(string.Format("La Raison Sociale {0} n'est pas valide", value));
+                }
+                _raisonSociale = value;
+            }
+        }
         /// <summary>
         /// Adresse client
         /// </summary>
@@ -115,7 +142,6 @@ namespace GestionCommercialeDll
             {
                 _adresse1 = value;
             }
-
         }
         public string Adresse2
         {
@@ -127,10 +153,9 @@ namespace GestionCommercialeDll
             {
                 _adresse2 = value;
             }
-
         }
         /// <summary>
-        /// Cod Postal Client
+        /// Cod postal client
         /// </summary>
         public int CodPostal
         {
@@ -140,10 +165,12 @@ namespace GestionCommercialeDll
             }
             set
             {
+                if (!CPValid(value))
+                {
+                    throw new Exception(string.Format("Le Code Postal {0} n'est pas valide", value));
+                }
                 _CP = value;
-
             }
-
         }
         /// <summary>
         /// Ville client 
@@ -156,35 +183,60 @@ namespace GestionCommercialeDll
             }
             set
             {
-
                 _ville = value;
             }
+        }
+        /// <summary>
+        /// Vérification du format de la valeur Raison Sociale
+        /// La longueur maxi 32 ne doit pas contenir de chiffre, elle accepte aussi des espaces vides
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public bool IsRaisonSocialeValide(string value)
+        {
+            if (value == string.Empty || value.Length > 32)
+
+            { return false; }
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (!char.IsLetter(value[i]) && !char.IsWhiteSpace(value[i]) && !char.IsDigit(value[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        /// <summary>
+        /// Verification du format de la valeur telephone
+        /// Longueur maxi 15, ne doit pas contenir de lettres  
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public bool IsTelephoneClientValid(int value)
+        {
+            string number = value.ToString();
+
+            return Regex.Match(number, @"^(^[0-9]{9}$|^06[0-9]{8}$|^00[0-9]{11,13}$)$").Success;
+
 
         }
         /// <summary>
-        /// Verification du format de la valeur _raisonSociale
-        /// Longueur maxi 32 , elle doit permettre des espaces   
+        /// Verification de la propriete id client, longueur maxi 4,
+        /// ne doit pas contenir de lettres
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
+        public bool IsIdClientValid(int value)
 
-        /// <summary>
-        /// Vérification du format de la valeur _telephoneClient
-        /// Longueur maximum 15 chiffre, ne doit pas contenir des lettres
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        /// 
-        public bool IsTelephoneClientValid(int value)
         {
-
             string valeur = value.ToString();
 
-            if (valeur == "" || valeur.Length > 15)
+            if (valeur == null || valeur.Length > 4)
 
                 return false;
 
-            for (int i = 0; i < valeur.Length - 1; i++)
+            for (int i = 0; i < valeur.Length; i++)
             {
                 if (!char.IsDigit(valeur[i]))
                 {
@@ -192,48 +244,31 @@ namespace GestionCommercialeDll
                 }
             }
             return true;
+
         }
+
+        public bool CPValid(int value)
+
+        {
+            string valeur = value.ToString();
+
+            if (valeur == null || valeur.Length != 5)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+
 
         /// <summary>
-        ///  Vérification du format de la valeur _idClient
-        ///  Longueur maxi 4, ne doit pas permettre des lettres
+        /// Surcharge (override) de la fonction héritée Equals
+        /// Elle doit renvoyer la comparaison de deux clients
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
-
-
-
-        public HashSet<Contact> ListContact { get; set; }
-
-        public Activite Activite { get; set; }
-        public int IdClient
-        {
-            get { return _idClient; }
-
-            set
-            {
-                if (!IsIdValid(value))
-                {
-                    throw new Exception(string.Format("L'id saisi {0} n'est pas valid ", value));      
-                }
-                 _idClient = value; }
-        }
-
-        public string RaisonSociale
-        {
-            get { return _raisonSociale; }
-            set {
-                if (!IsRaisonSocValide(value))
-                {
-                    throw new Exception(string.Format("La Raison Sociale {0} n'est pas valide", value));
-                } 
-                     _raisonSociale = value; }
-        }
-
-        /// Surcharge ( override ) de la fonction héritée Equals 
-        ///Elle doit renvoyer la comparaison de deux IdClients
-        ///
-        public override bool Equals(object obj)
+        public override bool Equals(Object obj)
         {
             if (obj == null)
             { return false; }
@@ -241,52 +276,24 @@ namespace GestionCommercialeDll
             if (!(obj is Client))
             { return false; }
 
-
             return this.IdClient == ((Client)obj).IdClient;
-
         }
 
+        /// <summary>
+        /// Surcharge(override) de la fonction héritée Equals
+        /// Elle doit renvoyer le HashCode de la proprieté Id client 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return this.IdClient.GetHashCode();
         }
 
-        public bool IsIdValid(int id)
-        {
-            string valeur =id.ToString();
 
-            for (int i = 0; i < valeur.Length; i++)
-            {
+        public HashSet<Contact> ListContact { get; set; }
 
-                if (!char.IsDigit(valeur[i]) || valeur.Length>4|| valeur== string.Empty)
-                {
-                    return false;
-                }
-            }
-            return true;
-
-        }
-
-        public bool IsRaisonSocValide(string value)
-        {
-            if (value.Length < 2 || value.Length > 32 || value == string.Empty)
-            {
-                return false;
-            }
-            for (int i = 0; i < value.Length; i++)
-            {
-                if (!char.IsLetter(value[i]) 
-                    || !char.IsDigit(value[i]) || !char.IsWhiteSpace(value[i])) 
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
+        public Activite Activite { get; set; }
 
 
     }
-
 }

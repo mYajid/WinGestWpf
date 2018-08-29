@@ -5,22 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GestionCommercialeDll
-{
-
-
-    public enum Metier { Boisson  = 1, laiterie, Administration }
-    public  enum Nature { Principale = 1, Secondaire , Ancienne  }
-
+{   //public enum Metier {Administration, Bovins, Cereales, Boissons, Laiterie, Pêche,Mecanique, }
+    public  enum Natur { Principale, Secondaire,Ancienne}
    public class Activite
     {
-       
+
+        public static List<String> Metiers = Fichier.ReadActivite();
+       // { "Administration", "Bovins", "Cereales", "Boissons", "Laiterie", "Pêche","Mecanique"};
+
         
 
-        public Metier ActiviteAct
-        { get; set; }
-      public Nature nature { get; set; }
+        public String Activit { get; set; }
+        public Natur NatureAct { get; set; }
 
-        public Client client { get; set; }
+        public Client Client { get; set; }
+       
+       
+
+
+
     }
 
 

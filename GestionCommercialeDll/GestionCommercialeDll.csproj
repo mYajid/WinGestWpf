@@ -43,6 +43,7 @@
     <Compile Include="Activite.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="File.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

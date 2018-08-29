@@ -101,11 +101,41 @@ namespace WpfWinGest
 
 
 
-            //foreach (Client item in Client.clientsHS)
+        }
+
+        private void dtgListClient_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //if (sender != null)
             //{
-            //   // Remplit la DataGridView à partir de la liste HachSet où sont stockées les données des clients.
-            //    this.dtgListClient.r.Add(item.RaisonSociale, item.Ville, item.CodPostal, item.TypeSociete, item.Activite.Activit, item.Activite.NatureAct);
+            //    DataGrid grid = sender as DataGrid;
+
+            //    if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+            //    {
+            //        DataGridRow dgr = grid.ItemContainerGenerator.ContainerFromItem(grid.SelectedItem) as DataGridRow;
+
+
+
+
+            //    }
             //}
+
+
+            //MonObjet OBJET = (MonObjet)DataGrid.SelectedItem;
+
+            //string recuper = OBJET.NomDeLaCellule;
+            Client client = (Client)dtgListClient.SelectedItem;
+
+
+            //Dialogue non modale avec fenêtre Consultation Client.
+            WConsultClient1 ConsultClient = new WConsultClient1(client);
+            ConsultClient.Show();
+
+
+
+
+
+
+
         }
     }
 }
